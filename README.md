@@ -320,44 +320,4 @@ agentic-document-intelligence-platform/
 └── README.md
 ```
 
-## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
-
-- Groq for the LLM API
-- LangChain for the RAG framework
-- FastAPI for the backend framework
-- React team for the frontend framework
-
-## 📧 Contact
-
-For questions or support, please open an issue on GitHub.
-
-## 🎉 Features Roadmap
-
-- [ ] Email verification
-- [ ] Password reset
-- [ ] User profile management
-- [ ] Document versioning
-- [ ] Advanced search filters
-- [ ] Export conversations
-- [ ] API rate limiting
-- [ ] Multi-language support
-- [ ] Mobile app
-- [ ] Docker deployment
-
----
-
-**Made with ❤️ using Python, React, and AI**
