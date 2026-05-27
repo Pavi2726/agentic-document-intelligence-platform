@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Send, Plus, SunMoon } from 'lucide-react';
+import { Send, Plus, SunMoon, Volume2, VolumeX } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { sendChatMessageStream, getChatHistory, getChatSessions } from '../services/api';
 import { ChatMessage, ChatSession } from '../types';
@@ -12,6 +12,7 @@ const Chat = () => {
   const [loading, setLoading] = useState(false);
   const [streaming, setStreaming] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [speaking, setSpeaking] = useState<number | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -88,12 +89,38 @@ const Chat = () => {
 
   const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
 
+  const handleSpeak = (text: string, index: number) => {
+    if (speaking === index) {
+      window.speechSynthesis.cancel();
+      setSpeaking(null);
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+    
+    utterance.onend = () => setSpeaking(null);
+    utterance.onerror = () => setSpeaking(null);
+    
+    setSpeaking(index);
+    window.speechSynthesis.speak(utterance);
+  };
+
+  useEffect(() => {
+    return () => {
+      window.speechSynthesis.cancel();
+    };
+  }, []);
+
   return (
     <div className="flex h-full gap-4">
-      <div className="w-64 bg-white rounded-lg shadow p-4">
+      <div className="w-64 bg-white dark:bg-gray-800 rounded-lg shadow p-4">
         <button
           onClick={startNewChat}
-          className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center justify-center mb-4"
+          className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center justify-center mb-4 text-base"
         >
           <Plus className="w-5 h-5 mr-2" />
           New Chat
@@ -103,14 +130,14 @@ const Chat = () => {
             <button
               key={session.session_id}
               onClick={() => loadHistory(session.session_id)}
-              className={`w-full text-left px-3 py-2 rounded hover:bg-gray-100 ${
-                sessionId === session.session_id ? 'bg-gray-100' : ''
+              className={`w-full text-left px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 ${
+                sessionId === session.session_id ? 'bg-gray-100 dark:bg-gray-700' : ''
               }`}
             >
-              <div className="text-sm font-medium truncate">
+              <div className="text-sm font-medium truncate dark:text-gray-100">
                 Session {session.session_id.slice(-8)}
               </div>
-              <div className="text-xs text-gray-500">{session.message_count} messages</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400">{session.message_count} messages</div>
             </button>
           ))}
         </div>
@@ -132,11 +159,26 @@ const Chat = () => {
               key={idx}
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
-              <div className={`max-w-3xl px-4 py-2 rounded-lg shadow-sm ${msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100'}`}>
-                <div className="prose max-w-none break-words text-sm">
-                  <ReactMarkdown>{msg.content}</ReactMarkdown>
+              <div className={`max-w-3xl px-5 py-4 rounded-lg shadow-sm ${msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100'}`}>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="prose max-w-none break-words text-lg leading-relaxed flex-1">
+                    <ReactMarkdown>{msg.content}</ReactMarkdown>
+                  </div>
+                  {msg.role === 'assistant' && (
+                    <button
+                      onClick={() => handleSpeak(msg.content, idx)}
+                      className="flex-shrink-0 p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                      title={speaking === idx ? 'Stop speaking' : 'Read aloud'}
+                    >
+                      {speaking === idx ? (
+                        <VolumeX className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                      ) : (
+                        <Volume2 className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                      )}
+                    </button>
+                  )}
                 </div>
-                <div className="text-xs text-gray-500 dark:text-gray-400 mt-1 text-right">
+                <div className="text-base text-gray-500 dark:text-gray-400 mt-2 text-right">
                   {new Date(msg.timestamp).toLocaleString()}
                 </div>
               </div>
@@ -144,12 +186,12 @@ const Chat = () => {
           ))}
           {(loading || streaming) && (
             <div className="flex justify-start">
-              <div className="bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-lg">
+              <div className="bg-gray-100 dark:bg-gray-700 px-4 py-3 rounded-lg">
                 <div className="flex space-x-2 items-center">
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-100"></div>
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-200"></div>
-                  <div className="text-xs text-gray-600 dark:text-gray-300 ml-2">AI is typing...</div>
+                  <div className="text-base text-gray-600 dark:text-gray-300 ml-2">AI is typing...</div>
                 </div>
               </div>
             </div>
@@ -157,7 +199,7 @@ const Chat = () => {
           <div ref={messagesEndRef} />
         </div>
 
-        <div className="border-t p-4">
+        <div className="border-t dark:border-gray-700 p-4">
           <div className="flex items-center gap-2">
             <input
               type="text"
@@ -165,13 +207,13 @@ const Chat = () => {
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleSend()}
               placeholder="Type your message..."
-              className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700"
+              className="flex-1 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 text-lg dark:text-gray-100"
             />
 
             <button
               onClick={handleSend}
               disabled={loading}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 flex items-center gap-2"
+              className="bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700 disabled:opacity-50 flex items-center gap-2 text-base"
               title="Send message"
             >
               <Send className="w-5 h-5" />
