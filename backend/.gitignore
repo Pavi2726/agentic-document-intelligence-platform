@@ -38,6 +38,9 @@ venv.bak/
 # Documentation (exclude from git)
 *.md
 
+# Batch files
+*.bat
+
 # IDE
 .vscode/
 .idea/

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Send, Plus, SunMoon } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import { sendChatMessage, sendChatMessageStream, getChatHistory, getChatSessions } from '../services/api';
+import { sendChatMessageStream, getChatHistory, getChatSessions } from '../services/api';
 import { ChatMessage, ChatSession } from '../types';
 
 const Chat = () => {
@@ -38,7 +38,7 @@ const Chat = () => {
     setSessionId(sid);
   };
 
-  const handleSend = async (useStream = false) => {
+  const handleSend = async () => {
     if (!input.trim() || loading) return;
 
     const userMessage: ChatMessage = {
@@ -49,59 +49,33 @@ const Chat = () => {
 
     setMessages(prev => [...prev, userMessage]);
     setInput('');
+    setStreaming(true);
+    setLoading(true);
 
-    if (useStream) {
-      setStreaming(true);
-      setLoading(true);
+    let accumulated = '';
 
-      let accumulated = '';
-
-      try {
-        const response = await sendChatMessageStream(input, sessionId || undefined, (chunk) => {
-          accumulated += chunk;
-          setMessages(prev => {
-            const last = prev[prev.length - 1];
-            if (last && last.role === 'assistant') {
-              return [...prev.slice(0, -1), { ...last, content: accumulated, timestamp: new Date().toISOString() }];
-            }
-            return [...prev, { role: 'assistant', content: accumulated, timestamp: new Date().toISOString() }];
-          });
+    try {
+      const response = await sendChatMessageStream(input, sessionId || undefined, (chunk) => {
+        accumulated += chunk;
+        setMessages(prev => {
+          const last = prev[prev.length - 1];
+          if (last && last.role === 'assistant') {
+            return [...prev.slice(0, -1), { ...last, content: accumulated, timestamp: new Date().toISOString() }];
+          }
+          return [...prev, { role: 'assistant', content: accumulated, timestamp: new Date().toISOString() }];
         });
+      });
 
-        const newSessionId = response.headers.get('x-session-id');
-        if (!sessionId && newSessionId) {
-          setSessionId(newSessionId);
-          await loadSessions();
-        }
-      } catch (err) {
-        console.error('Streaming chat error:', err);
-      } finally {
-        setStreaming(false);
-        setLoading(false);
+      const newSessionId = response.headers.get('x-session-id');
+      if (!sessionId && newSessionId) {
+        setSessionId(newSessionId);
+        await loadSessions();
       }
-    } else {
-      setLoading(true);
-
-      try {
-        const response = await sendChatMessage(input, sessionId || undefined);
-
-        const assistantMessage: ChatMessage = {
-          role: 'assistant',
-          content: response.answer,
-          timestamp: new Date().toISOString(),
-        };
-
-        setMessages(prev => [...prev, assistantMessage]);
-
-        if (!sessionId) {
-          setSessionId(response.session_id);
-          await loadSessions();
-        }
-      } catch (error) {
-        console.error('Chat error:', error);
-      } finally {
-        setLoading(false);
-      }
+    } catch (err) {
+      console.error('Streaming chat error:', err);
+    } finally {
+      setStreaming(false);
+      setLoading(false);
     }
   };
 
@@ -189,26 +163,19 @@ const Chat = () => {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleSend(streaming || false)}
+              onKeyPress={(e) => e.key === 'Enter' && handleSend()}
               placeholder="Type your message..."
               className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700"
             />
 
             <button
-              onClick={() => handleSend(true)}
+              onClick={handleSend}
               disabled={loading}
-              className="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 disabled:opacity-50"
-              title="Send streaming"
-            >
-              Stream
-            </button>
-            <button
-              onClick={() => handleSend(false)}
-              disabled={loading}
-              className="bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50"
-              title="Send"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 flex items-center gap-2"
+              title="Send message"
             >
               <Send className="w-5 h-5" />
+              Send
             </button>
           </div>
         </div>

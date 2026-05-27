@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Environment Variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentation
+*.md
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+logs/
+
+# Uploads (will be in volume)
+uploads/*.pdf
+uploads/*.docx
+uploads/*.txt
+uploads/users.json
+uploads/sessions.json
+uploads/chat_history.json
+
+# Vector Store (will be in volume)
+vector_store/
+
+# Batch files
+*.bat
+
+# Backup files
+*.bak
+*.backup
+*~

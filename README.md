@@ -99,6 +99,33 @@ A full-stack AI-powered document intelligence platform with multi-agent RAG syst
 - Python 3.11+
 - Node.js 18+
 - Git
+- Docker & Docker Compose (for containerized deployment)
+
+### Option 1: Docker Deployment (Recommended)
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/agentic-document-intelligence-platform.git
+   cd agentic-document-intelligence-platform
+   ```
+
+2. **Configure Environment**
+   ```bash
+   cp .env.docker .env
+   # Edit .env and add your GROQ_API_KEY
+   ```
+
+3. **Start with Docker Compose**
+   ```bash
+   docker-compose up -d
+   ```
+
+4. **Access the Application**
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:8000
+   - API Docs: http://localhost:8000/docs
+
+### Option 2: Local Development
 
 ### Installation
 
@@ -139,19 +166,16 @@ A full-stack AI-powered document intelligence platform with multi-agent RAG syst
 
 5. **Start the Application**
    
-   **Option 1: Automatic (Windows)**
+   **Terminal 1 - Backend:**
    ```bash
-   # From project root
-   START_ALL.bat
+   cd backend
+   venv\Scripts\activate  # Windows
+   # source venv/bin/activate  # Linux/Mac
+   uvicorn app.main:app --reload --port 8000
    ```
    
-   **Option 2: Manual**
+   **Terminal 2 - Frontend:**
    ```bash
-   # Terminal 1 - Backend
-   cd backend
-   uvicorn app.main:app --reload --port 8000
-   
-   # Terminal 2 - Frontend
    cd frontend
    npm run dev
    ```
