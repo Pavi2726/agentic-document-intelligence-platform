@@ -19,6 +19,13 @@ app = FastAPI(
     version="1.0.0",
 )
 
+# Increase file upload size limit to 50MB
+app.router.route_class = type(
+    "CustomRoute",
+    (app.router.route_class,),
+    {"max_body_size": 50 * 1024 * 1024}
+)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

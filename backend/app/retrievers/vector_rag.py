@@ -61,6 +61,7 @@ class VectorRAGStore:
         return deduplicated
 
     def load_index(self) -> None:
+        """Load all indexed documents from metadata file."""
         if os.path.exists(self.metadata_path):
             with open(self.metadata_path, "rb") as handle:
                 loaded = pickle.load(handle)
@@ -77,9 +78,10 @@ class VectorRAGStore:
         if self.metadata:
             self.metadata = self._deduplicate_metadata(self.metadata)
 
-        if self.active_document:
-            self.metadata = [chunk for chunk in self.metadata if chunk.get("filename") == self.active_document]
-            self.metadata = self._deduplicate_metadata(self.metadata)
+        # DON'T filter by active_document - keep ALL documents for search
+        # if self.active_document:
+        #     self.metadata = [chunk for chunk in self.metadata if chunk.get("filename") == self.active_document]
+        #     self.metadata = self._deduplicate_metadata(self.metadata)
 
         self.chunk_embeddings = None
         self.index = None
@@ -100,20 +102,18 @@ class VectorRAGStore:
         return np.asarray(embeddings, dtype="float32")
 
     def index_chunks(self, chunks) -> int:
+        """Index new chunks and ADD them to existing metadata."""
         if not chunks:
             return 0
 
-        self.metadata = []
-        self.chunk_embeddings = None
-        self.index = None
+        # Load existing metadata first
+        self.load_index()
 
         self._ensure_model()
         texts = [chunk["text"] for chunk in chunks]
-        embeddings = self._embed_texts(texts)
+        new_embeddings = self._embed_texts(texts)
 
-        self.index = faiss.IndexFlatIP(embeddings.shape[1])
-        self.index.add(embeddings)
-
+        # Add new chunks to metadata
         for chunk in chunks:
             self.metadata.append(
                 {
@@ -124,7 +124,14 @@ class VectorRAGStore:
                 }
             )
 
-        self.chunk_embeddings = embeddings
+        # Rebuild embeddings for ALL chunks
+        all_texts = [chunk.get("text", "") for chunk in self.metadata]
+        self.chunk_embeddings = self._embed_texts(all_texts)
+
+        # Rebuild FAISS index with all embeddings
+        self.index = faiss.IndexFlatIP(self.chunk_embeddings.shape[1])
+        self.index.add(self.chunk_embeddings)
+
         self.active_document = chunks[0].get("filename")
         self.save_index()
         return len(chunks)
@@ -135,18 +142,21 @@ class VectorRAGStore:
         return self.index_chunks(chunks)
 
     def search(self, query: str, top_k: int = 5, filename: str | None = None):
+        """Search for relevant chunks. If filename is None, search ALL documents."""
         if not self.metadata:
-            return []
-
-        target_filename = filename or self.active_document
-        if target_filename is None:
             return []
 
         self._ensure_model()
         self._ensure_chunk_embeddings()
 
         query_embedding = np.asarray(self.model.encode([query], normalize_embeddings=True), dtype="float32")
-        candidate_indices = [index for index, chunk in enumerate(self.metadata) if chunk.get("filename") == target_filename]
+        
+        # If filename specified, search only that file
+        if filename:
+            candidate_indices = [index for index, chunk in enumerate(self.metadata) if chunk.get("filename") == filename]
+        else:
+            # Search ALL documents
+            candidate_indices = list(range(len(self.metadata)))
 
         if not candidate_indices:
             return []

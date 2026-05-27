@@ -1,9 +1,69 @@
-venv/
-.venv/
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+*.egg-info/
 
+# Node
+node_modules/
+dist/
+build/
+
+# Environment Variables
 .env
+.env.local
+*.env
 
-uploads/
-vector_store/
+# Documentation (exclude from git)
+*.md
+!README.md
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+
+# Uploaded Files
+backend/uploads/*.pdf
+backend/uploads/*.docx
+backend/uploads/*.txt
+backend/uploads/*.csv
+backend/uploads/chat_history.json
+backend/uploads/users.json
+backend/uploads/sessions.json
+
+# Vector Store
+backend/vector_store/
+*.faiss
+*.pkl
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Temporary files
+*.tmp
+*.temp

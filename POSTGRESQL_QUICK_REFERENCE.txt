@@ -1,0 +1,153 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║              PostgreSQL Setup - Quick Reference                ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+┌────────────────────────────────────────────────────────────────┐
+│  STEP 1: INSTALL POSTGRESQL                                     │
+└────────────────────────────────────────────────────────────────┘
+
+   Download: https://www.postgresql.org/download/windows/
+   
+   Installation Settings:
+   ✓ Port: 5432
+   ✓ Password: (choose a password, e.g., "password")
+   ✓ Locale: Default
+   
+   After installation, PostgreSQL service should be running.
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  STEP 2: RUN AUTOMATED SETUP                                    │
+└────────────────────────────────────────────────────────────────┘
+
+   Double-click: SETUP_POSTGRESQL.bat
+   
+   Choose option [4] Full setup
+   
+   This will:
+   ✓ Install Python packages (sqlalchemy, psycopg2)
+   ✓ Create database 'document_intelligence'
+   ✓ Create tables (document_metadata, upload_sessions, retrieval_logs)
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  STEP 3: UPDATE .ENV FILE                                       │
+└────────────────────────────────────────────────────────────────┘
+
+   Edit: backend/.env
+   
+   Update this line with YOUR password:
+   POSTGRES_URL=postgresql://postgres:YOUR_PASSWORD@localhost:5432/document_intelligence
+   
+   Example:
+   POSTGRES_URL=postgresql://postgres:password@localhost:5432/document_intelligence
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  STEP 4: START THE APPLICATION                                  │
+└────────────────────────────────────────────────────────────────┘
+
+   Double-click: START_ALL.bat
+   
+   Or manually:
+   Terminal 1: cd backend && start_server.bat
+   Terminal 2: cd frontend && npm run dev
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  VERIFY IT WORKS                                                 │
+└────────────────────────────────────────────────────────────────┘
+
+   1. Open: http://localhost:8000/api/health
+      Should show: "postgres_configured": true
+   
+   2. Upload a document at: http://localhost:3000/documents
+   
+   3. Check analytics at: http://localhost:3000/analytics
+      Should show real data now!
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  MANUAL COMMANDS (If needed)                                    │
+└────────────────────────────────────────────────────────────────┘
+
+   Install dependencies:
+   ┌──────────────────────────────────────────────────────────┐
+   │ cd backend                                               │
+   │ venv\Scripts\activate                                    │
+   │ pip install sqlalchemy psycopg2-binary                   │
+   └──────────────────────────────────────────────────────────┘
+
+   Create database:
+   ┌──────────────────────────────────────────────────────────┐
+   │ psql -U postgres                                         │
+   │ CREATE DATABASE document_intelligence;                  │
+   │ \q                                                       │
+   └──────────────────────────────────────────────────────────┘
+
+   Initialize tables:
+   ┌──────────────────────────────────────────────────────────┐
+   │ cd backend                                               │
+   │ venv\Scripts\activate                                    │
+   │ python -c "from app.db.postgres import init_db; init_db()" │
+   └──────────────────────────────────────────────────────────┘
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  TROUBLESHOOTING                                                 │
+└────────────────────────────────────────────────────────────────┘
+
+   Problem: "psql: command not found"
+   Solution: Add PostgreSQL to PATH or use full path:
+            "C:\Program Files\PostgreSQL\16\bin\psql" -U postgres
+
+   Problem: "password authentication failed"
+   Solution: Check password in .env file matches PostgreSQL password
+
+   Problem: "database does not exist"
+   Solution: Run: psql -U postgres -c "CREATE DATABASE document_intelligence;"
+
+   Problem: "could not connect to server"
+   Solution: Check PostgreSQL service is running (services.msc)
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  WHAT YOU GET WITH POSTGRESQL                                   │
+└────────────────────────────────────────────────────────────────┘
+
+   ✓ Persistent document metadata
+   ✓ Upload session tracking
+   ✓ Query logs for analytics
+   ✓ Real-time analytics dashboard
+   ✓ Document management with database
+   ✓ Better performance
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  USEFUL POSTGRESQL COMMANDS                                      │
+└────────────────────────────────────────────────────────────────┘
+
+   Connect to database:
+   psql -U postgres -d document_intelligence
+
+   List all databases:
+   psql -U postgres -c "\l"
+
+   List tables:
+   psql -U postgres -d document_intelligence -c "\dt"
+
+   View documents:
+   psql -U postgres -d document_intelligence -c "SELECT * FROM document_metadata;"
+
+   View query logs:
+   psql -U postgres -d document_intelligence -c "SELECT * FROM retrieval_logs LIMIT 10;"
+
+   Delete all data:
+   psql -U postgres -d document_intelligence -c "TRUNCATE document_metadata, upload_sessions, retrieval_logs;"
+
+
+╔════════════════════════════════════════════════════════════════╗
+║  Ready? Run SETUP_POSTGRESQL.bat to begin!                     ║
+╚════════════════════════════════════════════════════════════════╝

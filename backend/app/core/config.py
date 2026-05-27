@@ -15,6 +15,13 @@ class Settings(BaseSettings):
     
     POSTGRES_URL: str
     
+    # Redis Configuration
+    REDIS_HOST: str = "localhost"
+    REDIS_PORT: int = 6379
+    
+    # MongoDB Configuration
+    MONGO_URI: str = "mongodb://localhost:27017/"
+    
     # Local Storage Folders
     UPLOAD_DIR: str = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "uploads")
     VECTOR_STORE_DIR: str = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "vector_store")

@@ -34,34 +34,56 @@ class Neo4jClient:
             session.run("CREATE CONSTRAINT IF NOT EXISTS FOR (d:Document) REQUIRE d.filename IS UNIQUE")
 
     def extract_entities_with_groq(self, text: str) -> list[dict]:
-        prompt = f"""Extract relationships from this text. Return ONLY a JSON array.
-Use SHORT relation names with underscores like WORKS_AT, HAS_ROLE, LOCATED_IN.
+        prompt = f"""Extract key entities and relationships from this text. Return ONLY a JSON array.
+Focus on: people, organizations, locations, concepts, and their relationships.
+Use SHORT relation names: WORKS_AT, LOCATED_IN, PART_OF, RELATED_TO, HAS_ROLE, etc.
 
-Example:
-[{{"subject": "Pavithra", "relation": "WORKS_AT", "object": "LTIMindtree"}},
- {{"subject": "Pavithra", "relation": "HAS_ROLE", "object": "Graduate Engineer Trainee"}}]
+Example format:
+[{{"subject": "John", "relation": "WORKS_AT", "object": "Google"}},
+ {{"subject": "Google", "relation": "LOCATED_IN", "object": "California"}}]
 
-No explanation. No markdown. Just the JSON array.
+Return ONLY the JSON array, no explanation.
 
-Text: {text[:500]}"""
+Text: {text[:800]}"""
 
         try:
             response = groq_client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
                 messages=[{"role": "user", "content": prompt}],
-                max_tokens=300,
-                temperature=0.0,
+                max_tokens=500,
+                temperature=0.1,
             )
             raw = response.choices[0].message.content.strip()
+            
+            # Clean up response
             if "```" in raw:
-                raw = raw.split("```")[1]
-                if raw.startswith("json"):
-                    raw = raw[4:]
+                parts = raw.split("```")
+                for part in parts:
+                    if part.strip().startswith("json"):
+                        raw = part[4:].strip()
+                    elif part.strip().startswith("["):
+                        raw = part.strip()
+            
             raw = raw.strip()
+            if not raw.startswith("["):
+                # Try to find JSON array in the response
+                start = raw.find("[")
+                end = raw.rfind("]") + 1
+                if start >= 0 and end > start:
+                    raw = raw[start:end]
+            
             data = json.loads(raw)
+            
+            # Validate and clean relationships
+            valid_relationships = []
             for item in data:
-                item["relation"] = item.get("relation", "RELATED_TO").upper().replace(" ", "_")
-            return data
+                if isinstance(item, dict) and "subject" in item and "object" in item:
+                    item["relation"] = item.get("relation", "RELATED_TO").upper().replace(" ", "_")
+                    # Filter out very short or generic entities
+                    if len(item["subject"]) > 1 and len(item["object"]) > 1:
+                        valid_relationships.append(item)
+            
+            return valid_relationships[:10]  # Limit to 10 relationships per chunk
         except Exception as e:
             print(f"[Graph] Extraction failed: {e}")
             return []
@@ -108,13 +130,15 @@ Text: {text[:500]}"""
 
     def extract_and_store_from_chunks(self, chunks: list[dict], filename: str) -> int:
         total_stored = 0
-        for chunk in chunks[:10]:
+        # Process only first 5 chunks for efficiency
+        for chunk in chunks[:5]:
             text = chunk.get("text", "")
-            if len(text) < 50:
+            if len(text) < 100:  # Skip very short chunks
                 continue
             relationships = self.extract_entities_with_groq(text)
             stored = self.store_relationships(relationships, filename)
             total_stored += stored
+            print(f"[Graph] Chunk processed: {stored} relationships stored")
         return total_stored
 
     def search_relationships(self, query: str) -> list[dict]:

@@ -1,21 +1,24 @@
 fastapi==0.111.0
 uvicorn==0.30.1
-pydantic-settings==2.3.1
+pydantic-settings>=2.4.0
 python-dotenv==1.0.1
 python-multipart==0.0.9
 
-langchain==0.2.5
-langchain-core==0.2.40
-langchain-community==0.2.5
-langchain-groq==0.1.5
-langgraph==0.2.16
-langchain-text-splitters==0.2.2
+langchain==0.3.7
+langchain-core==0.3.18
+langchain-community==0.3.5
+langchain-groq==0.2.1
+langgraph==0.2.45
+langchain-text-splitters==0.3.2
 
 groq==0.9.0
 
-faiss-cpu==1.8.0.post1
+# HTTP client (specific version for groq compatibility)
+httpx==0.27.0
+
+faiss-cpu==1.14.2
 sentence-transformers==3.0.1
-numpy<2
+numpy<2.0.0,>=1.24.0
 
 neo4j==5.21.0
 
@@ -27,3 +30,14 @@ docx2txt==0.8
 
 ddgs==9.0.0
 packaging<25
+
+# Redis for conversation context management
+redis==5.0.1
+
+# MongoDB for conversation context management
+pymongo==4.8.0
+motor==3.5.1
+
+# Additional dependencies for response synthesis
+openai==1.35.0
+anthropic==0.34.0

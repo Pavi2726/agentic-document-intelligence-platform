@@ -1,0 +1,109 @@
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║   AGENTIC DOCUMENT INTELLIGENCE PLATFORM - STARTUP GUIDE       ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+
+┌────────────────────────────────────────────────────────────────┐
+│  OPTION 1: AUTOMATIC START (EASIEST)                           │
+└────────────────────────────────────────────────────────────────┘
+
+   1. Double-click: START_ALL.bat
+   2. Wait for 2 windows to open
+   3. Open browser: http://localhost:3000
+   
+   ✓ Done!
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  OPTION 2: MANUAL START (2 TERMINALS)                          │
+└────────────────────────────────────────────────────────────────┘
+
+   TERMINAL 1 - Backend:
+   ┌──────────────────────────────────────────────────────────┐
+   │ cd backend                                               │
+   │ start_server.bat                                         │
+   │                                                          │
+   │ Wait for: "Uvicorn running on http://0.0.0.0:8000"      │
+   └──────────────────────────────────────────────────────────┘
+
+   TERMINAL 2 - Frontend:
+   ┌──────────────────────────────────────────────────────────┐
+   │ cd frontend                                              │
+   │ npm run dev                                              │
+   │                                                          │
+   │ Wait for: "Local: http://localhost:3000/"               │
+   └──────────────────────────────────────────────────────────┘
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  VERIFY IT'S WORKING                                            │
+└────────────────────────────────────────────────────────────────┘
+
+   ✓ Backend:  http://localhost:8000/api/health
+   ✓ API Docs: http://localhost:8000/docs
+   ✓ Frontend: http://localhost:3000
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  COMMON ERRORS & SOLUTIONS                                      │
+└────────────────────────────────────────────────────────────────┘
+
+   ERROR: "ECONNREFUSED"
+   → Backend is not running
+   → Start backend first (see above)
+
+   ERROR: "Port 8000 already in use"
+   → Kill existing process:
+     netstat -ano | findstr :8000
+     taskkill /PID <number> /F
+
+   ERROR: "Module not found"
+   → Reinstall dependencies:
+     cd backend
+     venv\Scripts\activate
+     pip install -r requirements.txt
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  WHAT YOU'LL SEE                                                │
+└────────────────────────────────────────────────────────────────┘
+
+   Backend Terminal:
+   ┌──────────────────────────────────────────────────────────┐
+   │ INFO: Uvicorn running on http://0.0.0.0:8000            │
+   │ INFO: Application startup complete.                     │
+   └──────────────────────────────────────────────────────────┘
+
+   Frontend Terminal:
+   ┌──────────────────────────────────────────────────────────┐
+   │ VITE v5.4.21  ready in 423 ms                           │
+   │ ➜  Local:   http://localhost:3000/                      │
+   └──────────────────────────────────────────────────────────┘
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  FEATURES (NO DATABASE REQUIRED!)                               │
+└────────────────────────────────────────────────────────────────┘
+
+   ✓ Upload Documents (PDF, DOCX, TXT)
+   ✓ Chat with AI (Groq)
+   ✓ Knowledge Graph (Auto-generated)
+   ✓ Vector Search (FAISS)
+   ✓ Document Management
+   ✓ Analytics Dashboard
+
+
+┌────────────────────────────────────────────────────────────────┐
+│  NEED HELP?                                                     │
+└────────────────────────────────────────────────────────────────┘
+
+   1. Check both terminals are running
+   2. Verify backend: http://localhost:8000/api/health
+   3. Check for error messages in terminals
+   4. Read STARTUP_GUIDE.md for detailed help
+
+
+╔════════════════════════════════════════════════════════════════╗
+║  Ready? Double-click START_ALL.bat to begin!                   ║
+╚════════════════════════════════════════════════════════════════╝
