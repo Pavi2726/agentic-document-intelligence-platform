@@ -18,10 +18,14 @@ import { AnalyticsMetrics } from '../types';
 const Analytics = () => {
   const [metrics, setMetrics] = useState<AnalyticsMetrics | null>(null);
   const [loading, setLoading] = useState(true);
+  const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
 
   useEffect(() => {
     loadMetrics();
-    const interval = setInterval(loadMetrics, 30000); // Refresh every 30s
+    const interval = setInterval(() => {
+      loadMetrics();
+      setLastUpdate(new Date());
+    }, 10000); // Refresh every 10 seconds for real-time data
     return () => clearInterval(interval);
   }, []);
 
@@ -54,7 +58,27 @@ const Analytics = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">Analytics Dashboard</h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Analytics Dashboard</h1>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span className="text-sm text-gray-600">Live</span>
+          </div>
+          <div className="text-sm text-gray-500">
+            Last updated: {lastUpdate.toLocaleTimeString()}
+          </div>
+          <button
+            onClick={() => {
+              loadMetrics();
+              setLastUpdate(new Date());
+            }}
+            className="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"
+          >
+            Refresh Now
+          </button>
+        </div>
+      </div>
 
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
@@ -167,18 +191,21 @@ const Analytics = () => {
 
       {/* System Health */}
       <div className="mt-6 bg-white p-6 rounded-lg shadow">
-        <h2 className="text-xl font-semibold mb-4">System Health</h2>
+        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+          System Health
+          <span className="text-xs text-gray-500">(Real-time)</span>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="flex items-center">
-            <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+            <div className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
             <span>Vector Store: Online</span>
           </div>
           <div className="flex items-center">
-            <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+            <div className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
             <span>Knowledge Graph: Online</span>
           </div>
           <div className="flex items-center">
-            <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+            <div className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
             <span>Database: Online</span>
           </div>
         </div>

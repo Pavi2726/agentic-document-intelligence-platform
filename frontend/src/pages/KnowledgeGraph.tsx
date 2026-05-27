@@ -8,7 +8,7 @@ const KnowledgeGraph = () => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [graphData, setGraphData] = useState<GraphData>({ nodes: [], edges: [] });
   const [filter, setFilter] = useState('');
-  const [selectedNode, setSelectedNode] = useState<string | null>(null);
+  const [selectedNode, setSelectedNode] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -104,7 +104,7 @@ const KnowledgeGraph = () => {
       .enter()
       .append('circle')
       .attr('r', 20)
-      .attr('fill', d => d.id === selectedNode ? '#3b82f6' : '#60a5fa')
+      .attr('fill', d => d.id === selectedNode?.id ? '#3b82f6' : '#60a5fa')
       .attr('stroke', '#fff')
       .attr('stroke-width', 2)
       .style('cursor', 'pointer')
@@ -127,7 +127,7 @@ const KnowledgeGraph = () => {
 
     // Node click handler
     node.on('click', (_event, d: any) => {
-      setSelectedNode(d.id);
+      setSelectedNode(d);
     });
 
     // Update positions on tick
@@ -250,10 +250,77 @@ const KnowledgeGraph = () => {
       </div>
 
       {selectedNode && (
-        <div className="mt-4 bg-white p-4 rounded-lg shadow">
-          <h3 className="font-semibold mb-2">Selected Node: {selectedNode}</h3>
-          <div className="text-sm text-gray-600">
-            <p>Connections: {graphData.edges.filter(e => e.source === selectedNode || e.target === selectedNode).length}</p>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={() => setSelectedNode(null)}>
+          <div className="bg-white rounded-lg shadow-xl p-6 max-w-md w-full mx-4" onClick={(e) => e.stopPropagation()}>
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-xl font-bold text-gray-900">{selectedNode.label}</h3>
+              <button
+                onClick={() => setSelectedNode(null)}
+                className="text-gray-400 hover:text-gray-600 text-2xl leading-none"
+              >
+                ×
+              </button>
+            </div>
+            
+            <div className="space-y-3">
+              <div>
+                <p className="text-sm font-semibold text-gray-600">Type</p>
+                <p className="text-base text-gray-900">{selectedNode.type || 'Entity'}</p>
+              </div>
+              
+              <div>
+                <p className="text-sm font-semibold text-gray-600">Connections</p>
+                <p className="text-base text-gray-900">
+                  {graphData.edges.filter(e => {
+                    const sourceId = typeof e.source === 'object' ? (e.source as any).id : e.source;
+                    const targetId = typeof e.target === 'object' ? (e.target as any).id : e.target;
+                    return sourceId === selectedNode.id || targetId === selectedNode.id;
+                  }).length} relationships
+                </p>
+              </div>
+              
+              <div>
+                <p className="text-sm font-semibold text-gray-600 mb-2">Related Entities</p>
+                <div className="space-y-2 max-h-48 overflow-y-auto">
+                  {graphData.edges
+                    .filter(e => {
+                      const sourceId = typeof e.source === 'object' ? (e.source as any).id : e.source;
+                      const targetId = typeof e.target === 'object' ? (e.target as any).id : e.target;
+                      return sourceId === selectedNode.id || targetId === selectedNode.id;
+                    })
+                    .map((edge, idx) => {
+                      const sourceId = typeof edge.source === 'object' ? (edge.source as any).id : edge.source;
+                      const targetId = typeof edge.target === 'object' ? (edge.target as any).id : edge.target;
+                      const relatedNodeId = sourceId === selectedNode.id ? targetId : sourceId;
+                      const relatedNode = graphData.nodes.find(n => n.id === relatedNodeId);
+                      const direction = sourceId === selectedNode.id ? '→' : '←';
+                      
+                      return (
+                        <div key={idx} className="bg-gray-50 p-2 rounded text-sm">
+                          <span className="text-gray-700">{direction} </span>
+                          <span className="font-medium text-blue-600">{edge.relation}</span>
+                          <span className="text-gray-700"> {direction === '→' ? 'to' : 'from'} </span>
+                          <span className="font-medium text-gray-900">{relatedNode?.label || relatedNodeId}</span>
+                        </div>
+                      );
+                    })}
+                  {graphData.edges.filter(e => {
+                    const sourceId = typeof e.source === 'object' ? (e.source as any).id : e.source;
+                    const targetId = typeof e.target === 'object' ? (e.target as any).id : e.target;
+                    return sourceId === selectedNode.id || targetId === selectedNode.id;
+                  }).length === 0 && (
+                    <p className="text-sm text-gray-500 italic">No relationships found</p>
+                  )}
+                </div>
+              </div>
+            </div>
+            
+            <button
+              onClick={() => setSelectedNode(null)}
+              className="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
