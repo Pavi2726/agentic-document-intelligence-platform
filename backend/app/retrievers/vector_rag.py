@@ -166,6 +166,7 @@ class VectorRAGStore:
         sorted_indices = np.argsort(scores)[::-1][: min(top_k, len(scores))]
 
         results = []
+<<<<<<< HEAD
 
         # Ensure all metadata entries have a tenant_id (default to org_101)
         for item in self.metadata:
@@ -188,6 +189,20 @@ class VectorRAGStore:
                         "metadata": chunk.get("metadata", {}),
                     }
                 )
+=======
+        for sorted_index in sorted_indices:
+            actual_index = candidate_indices[int(sorted_index)]
+            chunk = self.metadata[actual_index]
+            results.append(
+                {
+                    "score": float(scores[sorted_index]),
+                    "filename": chunk.get("filename"),
+                    "chunk_index": chunk.get("chunk_index"),
+                    "text": chunk.get("text"),
+                    "metadata": chunk.get("metadata", {}),
+                }
+            )
+>>>>>>> 64c74e2b56a86986869bd2a75e81c0dbcecf3857
 
         return results
 
