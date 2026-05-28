@@ -1,0 +1,6 @@
+{
+    "total_queries": 50,
+    "accuracy_percentage": 100.0,
+    "hallucination_rate": 0.0,
+    "average_latency": 0.0
+}

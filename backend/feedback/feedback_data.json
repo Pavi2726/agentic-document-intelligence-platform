@@ -1,0 +1,17 @@
+[
+    {
+        "query": "What is the leave policy?",
+        "response": "Employees receive annual leave.",
+        "rating": "helpful"
+    },
+    {
+        "query": "What is the leave policy?",
+        "response": "Employees receive annual leave.",
+        "rating": "helpful"
+    },
+    {
+        "query": "What is the leave policy?",
+        "response": "Employees receive annual leave.",
+        "rating": "helpful"
+    }
+]

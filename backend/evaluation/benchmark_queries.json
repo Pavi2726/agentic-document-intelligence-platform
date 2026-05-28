@@ -1,0 +1,306 @@
+[
+  {
+    "id": 1,
+    "type": "vector_rag",
+    "query": "What is the leave policy?",
+    "expected_answer": "Employees are entitled to annual leave."
+  },
+  {
+    "id": 2,
+    "type": "vector_rag",
+    "query": "Explain the attendance rules.",
+    "expected_answer": "Employees must maintain attendance."
+  },
+  {
+    "id": 3,
+    "type": "vector_rag",
+    "query": "What are the employee benefits?",
+    "expected_answer": "Employees receive company benefits."
+  },
+  {
+    "id": 4,
+    "type": "vector_rag",
+    "query": "Explain work from home policy.",
+    "expected_answer": "Employees can work remotely under policy."
+  },
+  {
+    "id": 5,
+    "type": "vector_rag",
+    "query": "What is the reimbursement process?",
+    "expected_answer": "Employees can submit reimbursement claims."
+  },
+  {
+    "id": 6,
+    "type": "vector_rag",
+    "query": "Explain company security guidelines.",
+    "expected_answer": "Employees must follow security practices."
+  },
+  {
+    "id": 7,
+    "type": "vector_rag",
+    "query": "What are onboarding procedures?",
+    "expected_answer": "New employees complete onboarding tasks."
+  },
+  {
+    "id": 8,
+    "type": "vector_rag",
+    "query": "Explain resignation policy.",
+    "expected_answer": "Employees must submit resignation notice."
+  },
+  {
+    "id": 9,
+    "type": "vector_rag",
+    "query": "What is the code of conduct?",
+    "expected_answer": "Employees must follow company ethics."
+  },
+  {
+    "id": 10,
+    "type": "vector_rag",
+    "query": "Explain travel reimbursement rules.",
+    "expected_answer": "Travel expenses can be reimbursed."
+  },
+  {
+    "id": 11,
+    "type": "vector_rag",
+    "query": "What are office timing rules?",
+    "expected_answer": "Employees must follow office timings."
+  },
+  {
+    "id": 12,
+    "type": "vector_rag",
+    "query": "Explain training program policy.",
+    "expected_answer": "Employees can attend training sessions."
+  },
+  {
+    "id": 13,
+    "type": "vector_rag",
+    "query": "What is the promotion policy?",
+    "expected_answer": "Promotions are based on performance."
+  },
+  {
+    "id": 14,
+    "type": "vector_rag",
+    "query": "Explain employee grievance policy.",
+    "expected_answer": "Employees can report grievances."
+  },
+  {
+    "id": 15,
+    "type": "vector_rag",
+    "query": "What are company holiday rules?",
+    "expected_answer": "Employees receive company holidays."
+  },
+
+  {
+    "id": 16,
+    "type": "graph_rag",
+    "query": "Who reports to the CTO?",
+    "expected_answer": "Engineering managers report to CTO."
+  },
+  {
+    "id": 17,
+    "type": "graph_rag",
+    "query": "Which department is managed by Alice?",
+    "expected_answer": "Alice manages the HR department."
+  },
+  {
+    "id": 18,
+    "type": "graph_rag",
+    "query": "Who are the team leads in engineering?",
+    "expected_answer": "Engineering team leads are listed."
+  },
+  {
+    "id": 19,
+    "type": "graph_rag",
+    "query": "What projects belong to the AI team?",
+    "expected_answer": "AI team manages AI projects."
+  },
+  {
+    "id": 20,
+    "type": "graph_rag",
+    "query": "Who manages the sales department?",
+    "expected_answer": "Sales department manager is identified."
+  },
+  {
+    "id": 21,
+    "type": "graph_rag",
+    "query": "Which employees work under Bob?",
+    "expected_answer": "Employees under Bob are identified."
+  },
+  {
+    "id": 22,
+    "type": "graph_rag",
+    "query": "What teams collaborate with DevOps?",
+    "expected_answer": "DevOps collaborates with multiple teams."
+  },
+  {
+    "id": 23,
+    "type": "graph_rag",
+    "query": "Who are the stakeholders for Project X?",
+    "expected_answer": "Stakeholders for Project X are identified."
+  },
+  {
+    "id": 24,
+    "type": "graph_rag",
+    "query": "Which department handles recruitment?",
+    "expected_answer": "HR department handles recruitment."
+  },
+  {
+    "id": 25,
+    "type": "graph_rag",
+    "query": "Who is connected to cybersecurity initiatives?",
+    "expected_answer": "Cybersecurity stakeholders are identified."
+  },
+
+  {
+    "id": 26,
+    "type": "sql",
+    "query": "What was the Q1 revenue?",
+    "expected_answer": "Revenue details for Q1."
+  },
+  {
+    "id": 27,
+    "type": "sql",
+    "query": "Show total employee count.",
+    "expected_answer": "Total employees are listed."
+  },
+  {
+    "id": 28,
+    "type": "sql",
+    "query": "What is the monthly sales report?",
+    "expected_answer": "Monthly sales data is displayed."
+  },
+  {
+    "id": 29,
+    "type": "sql",
+    "query": "Show average attendance percentage.",
+    "expected_answer": "Attendance percentage is calculated."
+  },
+  {
+    "id": 30,
+    "type": "sql",
+    "query": "What is the highest performing department?",
+    "expected_answer": "Top department is identified."
+  },
+  {
+    "id": 31,
+    "type": "sql",
+    "query": "Show yearly revenue trend.",
+    "expected_answer": "Revenue trends are displayed."
+  },
+  {
+    "id": 32,
+    "type": "sql",
+    "query": "What are the top 5 selling products?",
+    "expected_answer": "Top products are listed."
+  },
+  {
+    "id": 33,
+    "type": "sql",
+    "query": "Show employee salary distribution.",
+    "expected_answer": "Salary distribution is displayed."
+  },
+  {
+    "id": 34,
+    "type": "sql",
+    "query": "What is the customer retention rate?",
+    "expected_answer": "Retention metrics are shown."
+  },
+  {
+    "id": 35,
+    "type": "sql",
+    "query": "Show pending invoice count.",
+    "expected_answer": "Pending invoices are counted."
+  },
+
+  {
+    "id": 36,
+    "type": "web_search",
+    "query": "Latest AI trends in 2026?",
+    "expected_answer": "Recent AI trends are discussed."
+  },
+  {
+    "id": 37,
+    "type": "web_search",
+    "query": "Current cybersecurity threats?",
+    "expected_answer": "Cybersecurity threats are summarized."
+  },
+  {
+    "id": 38,
+    "type": "web_search",
+    "query": "Latest cloud computing technologies?",
+    "expected_answer": "Cloud technologies are explained."
+  },
+  {
+    "id": 39,
+    "type": "web_search",
+    "query": "Recent developments in generative AI?",
+    "expected_answer": "Generative AI updates are summarized."
+  },
+  {
+    "id": 40,
+    "type": "web_search",
+    "query": "Top enterprise AI tools in 2026?",
+    "expected_answer": "Enterprise AI tools are listed."
+  },
+
+  {
+    "id": 41,
+    "type": "multi_hop",
+    "query": "Which department had the highest revenue and who manages it?",
+    "expected_answer": "Top department and manager are identified."
+  },
+  {
+    "id": 42,
+    "type": "multi_hop",
+    "query": "Which employee completed the most projects in Q1?",
+    "expected_answer": "Top employee for Q1 projects is identified."
+  },
+  {
+    "id": 43,
+    "type": "multi_hop",
+    "query": "What projects are linked to the AI department and who leads them?",
+    "expected_answer": "AI projects and leaders are identified."
+  },
+  {
+    "id": 44,
+    "type": "multi_hop",
+    "query": "Which manager oversees the highest performing team?",
+    "expected_answer": "Manager of best team is identified."
+  },
+  {
+    "id": 45,
+    "type": "multi_hop",
+    "query": "Which department has the most employees and what is its revenue?",
+    "expected_answer": "Department and revenue are identified."
+  },
+  {
+    "id": 46,
+    "type": "multi_hop",
+    "query": "Who manages the department with the highest attendance?",
+    "expected_answer": "Manager is identified."
+  },
+  {
+    "id": 47,
+    "type": "multi_hop",
+    "query": "Which project has the highest budget and who owns it?",
+    "expected_answer": "Project owner and budget are identified."
+  },
+  {
+    "id": 48,
+    "type": "multi_hop",
+    "query": "Which teams collaborated on Project Alpha?",
+    "expected_answer": "Collaborating teams are identified."
+  },
+  {
+    "id": 49,
+    "type": "multi_hop",
+    "query": "What department handled the most customer complaints?",
+    "expected_answer": "Department handling complaints is identified."
+  },
+  {
+    "id": 50,
+    "type": "multi_hop",
+    "query": "Which employee has the highest performance rating and which team do they belong to?",
+    "expected_answer": "Top employee and team are identified."
+  }
+]

@@ -1,0 +1,905 @@
+[
+    {
+        "id": 1,
+        "query": "What is the leave policy?",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "What is the leave policy?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.007999897003173828
+    },
+    {
+        "id": 2,
+        "query": "Explain the attendance rules.",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "Explain the attendance rules.",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0010006427764892578
+    },
+    {
+        "id": 3,
+        "query": "What are the employee benefits?",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "What are the employee benefits?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.00099945068359375
+    },
+    {
+        "id": 4,
+        "query": "Explain work from home policy.",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "Explain work from home policy.",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0005037784576416016
+    },
+    {
+        "id": 5,
+        "query": "What is the reimbursement process?",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "What is the reimbursement process?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.001004934310913086
+    },
+    {
+        "id": 6,
+        "query": "Explain company security guidelines.",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "Explain company security guidelines.",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0
+    },
+    {
+        "id": 7,
+        "query": "What are onboarding procedures?",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "What are onboarding procedures?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0009999275207519531
+    },
+    {
+        "id": 8,
+        "query": "Explain resignation policy.",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "Explain resignation policy.",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0009999275207519531
+    },
+    {
+        "id": 9,
+        "query": "What is the code of conduct?",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "What is the code of conduct?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0
+    },
+    {
+        "id": 10,
+        "query": "Explain travel reimbursement rules.",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "Explain travel reimbursement rules.",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0010001659393310547
+    },
+    {
+        "id": 11,
+        "query": "What are office timing rules?",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "What are office timing rules?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0010058879852294922
+    },
+    {
+        "id": 12,
+        "query": "Explain training program policy.",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "Explain training program policy.",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0
+    },
+    {
+        "id": 13,
+        "query": "What is the promotion policy?",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "What is the promotion policy?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0010020732879638672
+    },
+    {
+        "id": 14,
+        "query": "Explain employee grievance policy.",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "Explain employee grievance policy.",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0010046958923339844
+    },
+    {
+        "id": 15,
+        "query": "What are company holiday rules?",
+        "expected_type": "vector_rag",
+        "response": {
+            "query": "What are company holiday rules?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0009984970092773438
+    },
+    {
+        "id": 16,
+        "query": "Who reports to the CTO?",
+        "expected_type": "graph_rag",
+        "response": {
+            "query": "Who reports to the CTO?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0009944438934326172
+    },
+    {
+        "id": 17,
+        "query": "Which department is managed by Alice?",
+        "expected_type": "graph_rag",
+        "response": {
+            "query": "Which department is managed by Alice?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0010023117065429688
+    },
+    {
+        "id": 18,
+        "query": "Who are the team leads in engineering?",
+        "expected_type": "graph_rag",
+        "response": {
+            "query": "Who are the team leads in engineering?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0009989738464355469
+    },
+    {
+        "id": 19,
+        "query": "What projects belong to the AI team?",
+        "expected_type": "graph_rag",
+        "response": {
+            "query": "What projects belong to the AI team?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0010013580322265625
+    },
+    {
+        "id": 20,
+        "query": "Who manages the sales department?",
+        "expected_type": "graph_rag",
+        "response": {
+            "query": "Who manages the sales department?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0009970664978027344
+    },
+    {
+        "id": 21,
+        "query": "Which employees work under Bob?",
+        "expected_type": "graph_rag",
+        "response": {
+            "query": "Which employees work under Bob?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0009980201721191406
+    },
+    {
+        "id": 22,
+        "query": "What teams collaborate with DevOps?",
+        "expected_type": "graph_rag",
+        "response": {
+            "query": "What teams collaborate with DevOps?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.001005411148071289
+    },
+    {
+        "id": 23,
+        "query": "Who are the stakeholders for Project X?",
+        "expected_type": "graph_rag",
+        "response": {
+            "query": "Who are the stakeholders for Project X?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0010006427764892578
+    },
+    {
+        "id": 24,
+        "query": "Which department handles recruitment?",
+        "expected_type": "graph_rag",
+        "response": {
+            "query": "Which department handles recruitment?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.001008749008178711
+    },
+    {
+        "id": 25,
+        "query": "Who is connected to cybersecurity initiatives?",
+        "expected_type": "graph_rag",
+        "response": {
+            "query": "Who is connected to cybersecurity initiatives?",
+            "category": "graph_rag",
+            "reason": "Matched graph relationship intent from the query.",
+            "result": {
+                "query": "Who is connected to cybersecurity initiatives?",
+                "status": "unavailable",
+                "results": [],
+                "message": "Neo4j is not available right now.",
+                "agent": "graph_rag"
+            }
+        },
+        "latency": 4.075891494750977
+    },
+    {
+        "id": 26,
+        "query": "What was the Q1 revenue?",
+        "expected_type": "sql",
+        "response": {
+            "query": "What was the Q1 revenue?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0014400482177734375
+    },
+    {
+        "id": 27,
+        "query": "Show total employee count.",
+        "expected_type": "sql",
+        "response": {
+            "query": "Show total employee count.",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0009636878967285156
+    },
+    {
+        "id": 28,
+        "query": "What is the monthly sales report?",
+        "expected_type": "sql",
+        "response": {
+            "query": "What is the monthly sales report?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0012755393981933594
+    },
+    {
+        "id": 29,
+        "query": "Show average attendance percentage.",
+        "expected_type": "sql",
+        "response": {
+            "query": "Show average attendance percentage.",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0
+    },
+    {
+        "id": 30,
+        "query": "What is the highest performing department?",
+        "expected_type": "sql",
+        "response": {
+            "query": "What is the highest performing department?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0010340213775634766
+    },
+    {
+        "id": 31,
+        "query": "Show yearly revenue trend.",
+        "expected_type": "sql",
+        "response": {
+            "query": "Show yearly revenue trend.",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0010001659393310547
+    },
+    {
+        "id": 32,
+        "query": "What are the top 5 selling products?",
+        "expected_type": "sql",
+        "response": {
+            "query": "What are the top 5 selling products?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0009999275207519531
+    },
+    {
+        "id": 33,
+        "query": "Show employee salary distribution.",
+        "expected_type": "sql",
+        "response": {
+            "query": "Show employee salary distribution.",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0
+    },
+    {
+        "id": 34,
+        "query": "What is the customer retention rate?",
+        "expected_type": "sql",
+        "response": {
+            "query": "What is the customer retention rate?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0010001659393310547
+    },
+    {
+        "id": 35,
+        "query": "Show pending invoice count.",
+        "expected_type": "sql",
+        "response": {
+            "query": "Show pending invoice count.",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0011932849884033203
+    },
+    {
+        "id": 36,
+        "query": "Latest AI trends in 2026?",
+        "expected_type": "web_search",
+        "response": {
+            "query": "Latest AI trends in 2026?",
+            "category": "web_search",
+            "reason": "Matched external real-world information intent from the query.",
+            "result": {
+                "query": "Latest AI trends in 2026?",
+                "results": [],
+                "message": "Returned 0 search result(s).",
+                "agent": "web_search"
+            }
+        },
+        "latency": 5.483962774276733
+    },
+    {
+        "id": 37,
+        "query": "Current cybersecurity threats?",
+        "expected_type": "web_search",
+        "response": {
+            "query": "Current cybersecurity threats?",
+            "category": "web_search",
+            "reason": "Matched external real-world information intent from the query.",
+            "result": {
+                "query": "Current cybersecurity threats?",
+                "results": [
+                    {
+                        "title": "CURRENT ELECTRICITY - NCERT",
+                        "href": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+                        "body": "Charges in motion constitute an electric current. Such \u2026"
+                    },
+                    {
+                        "title": "Electric current - Wikipedia",
+                        "href": "https://en.wikipedia.org/wiki/Electric_current",
+                        "body": "In the International System of Units (SI), electric current is \u2026"
+                    },
+                    {
+                        "title": "Current Electricity: Definition, Types, Solved Examples",
+                        "href": "https://allen.in/jee/physics/current-electricity",
+                        "body": "Electric current (I) is defined as the flow of electric charge. \u2026"
+                    },
+                    {
+                        "title": "Electric Current - GeeksforGeeks",
+                        "href": "https://www.geeksforgeeks.org/physics/electric-current/",
+                        "body": "Feb 13, 2026 \u00b7 Electric current is the rate of flow of electric \u2026"
+                    },
+                    {
+                        "title": "Electric Current: What is it? (Formula, Units, AC vs DC)",
+                        "href": "https://www.electrical4u.com/electric-current-and-theory-of-electricity/",
+                        "body": "May 9, 2021 \u00b7 Electric current is defined as a stream of \u2026"
+                    }
+                ],
+                "message": "Returned 5 search result(s).",
+                "agent": "web_search"
+            }
+        },
+        "latency": 0.4122638702392578
+    },
+    {
+        "id": 38,
+        "query": "Latest cloud computing technologies?",
+        "expected_type": "web_search",
+        "response": {
+            "query": "Latest cloud computing technologies?",
+            "category": "web_search",
+            "reason": "Matched external real-world information intent from the query.",
+            "result": {
+                "query": "Latest cloud computing technologies?",
+                "results": [],
+                "message": "Returned 0 search result(s).",
+                "agent": "web_search"
+            }
+        },
+        "latency": 2.5971181392669678
+    },
+    {
+        "id": 39,
+        "query": "Recent developments in generative AI?",
+        "expected_type": "web_search",
+        "response": {
+            "query": "Recent developments in generative AI?",
+            "category": "web_search",
+            "reason": "Matched external real-world information intent from the query.",
+            "result": {
+                "query": "Recent developments in generative AI?",
+                "results": [],
+                "message": "Returned 0 search result(s).",
+                "agent": "web_search"
+            }
+        },
+        "latency": 2.450265407562256
+    },
+    {
+        "id": 40,
+        "query": "Top enterprise AI tools in 2026?",
+        "expected_type": "web_search",
+        "response": {
+            "query": "Top enterprise AI tools in 2026?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.002003908157348633
+    },
+    {
+        "id": 41,
+        "query": "Which department had the highest revenue and who manages it?",
+        "expected_type": "multi_hop",
+        "response": {
+            "query": "Which department had the highest revenue and who manages it?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0012233257293701172
+    },
+    {
+        "id": 42,
+        "query": "Which employee completed the most projects in Q1?",
+        "expected_type": "multi_hop",
+        "response": {
+            "query": "Which employee completed the most projects in Q1?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0020406246185302734
+    },
+    {
+        "id": 43,
+        "query": "What projects are linked to the AI department and who leads them?",
+        "expected_type": "multi_hop",
+        "response": {
+            "query": "What projects are linked to the AI department and who leads them?",
+            "category": "web_search",
+            "reason": "Matched external real-world information intent from the query.",
+            "result": {
+                "query": "What projects are linked to the AI department and who leads them?",
+                "results": [
+                    {
+                        "title": "Projects \u2013 Department of Artificial Intelligence",
+                        "href": "https://ai.iith.ac.in/projects/index.html",
+                        "body": "Faculty in the AI department at IIT-Hyderabad are involved in many projects with the Government as well as industry. Here is an indicative list of some projects currently being handled (or handled in \u2026"
+                    },
+                    {
+                        "title": "Now government departments open artificial intelligence plan",
+                        "href": "https://economictimes.indiatimes.com/tech/artificial-intelligence/now-government-departments-open-artificial-intelligence-plan/articleshow/117652321.cms",
+                        "body": "Jan 29, 2025 \u00b7 Central and state government departments have floated as many as 13 projects and are seeking tech partners to implement AI in areas such as conversational chatbots, video analytics, and \u2026"
+                    },
+                    {
+                        "title": "Centre of Excellence in AI | National Informatics Centre | India",
+                        "href": "https://www.nic.gov.in/centre-of-excellence-for-artificial-intelligence/",
+                        "body": "Aug 29, 2025 \u00b7 Artificial Intelligence is the discipline that seeks patterns in data about all the aspects that allow an entity to determine how to perform a task and/or help make a decision."
+                    },
+                    {
+                        "title": "UnionMinister of Electronics & IT, Railways and I&B announces major ...",
+                        "href": "https://www.digitalindia.gov.in/press_release/unionminister-of-electronics-it-railways-and-ib-announces-major-initiatives-under-india-ai-mission/",
+                        "body": "Jan 31, 2025 \u00b7 Press Release UnionMinister of Electronics & IT, Railways and I&B announces major initiatives under India AI Mission 31 Jan 2025 |"
+                    },
+                    {
+                        "title": "INDIAai | Pillars",
+                        "href": "https://indiaai.gov.in/",
+                        "body": "India-AI Impact Summit 2026 will be anchored on three foundational pillars, known as 'Sutras' and around seven interconnected Chakras, areas of multilateral cooperation designed to channel \u2026"
+                    }
+                ],
+                "message": "Returned 5 search result(s).",
+                "agent": "web_search"
+            }
+        },
+        "latency": 1.492020606994629
+    },
+    {
+        "id": 44,
+        "query": "Which manager oversees the highest performing team?",
+        "expected_type": "multi_hop",
+        "response": {
+            "query": "Which manager oversees the highest performing team?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.001994609832763672
+    },
+    {
+        "id": 45,
+        "query": "Which department has the most employees and what is its revenue?",
+        "expected_type": "multi_hop",
+        "response": {
+            "query": "Which department has the most employees and what is its revenue?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.003006458282470703
+    },
+    {
+        "id": 46,
+        "query": "Who manages the department with the highest attendance?",
+        "expected_type": "multi_hop",
+        "response": {
+            "query": "Who manages the department with the highest attendance?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0019948482513427734
+    },
+    {
+        "id": 47,
+        "query": "Which project has the highest budget and who owns it?",
+        "expected_type": "multi_hop",
+        "response": {
+            "query": "Which project has the highest budget and who owns it?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.00400090217590332
+    },
+    {
+        "id": 48,
+        "query": "Which teams collaborated on Project Alpha?",
+        "expected_type": "multi_hop",
+        "response": {
+            "query": "Which teams collaborated on Project Alpha?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.003082275390625
+    },
+    {
+        "id": 49,
+        "query": "What department handled the most customer complaints?",
+        "expected_type": "multi_hop",
+        "response": {
+            "query": "What department handled the most customer complaints?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.0026874542236328125
+    },
+    {
+        "id": 50,
+        "query": "Which employee has the highest performance rating and which team do they belong to?",
+        "expected_type": "multi_hop",
+        "response": {
+            "query": "Which employee has the highest performance rating and which team do they belong to?",
+            "category": "vector_rag",
+            "reason": "Matched document content retrieval intent from the query.",
+            "result": {
+                "agent": "vector_rag",
+                "answer": "No relevant information found in the document.",
+                "results": [],
+                "message": "Retrieved and synthesized answer from document chunks."
+            }
+        },
+        "latency": 0.003160715103149414
+    }
+]
